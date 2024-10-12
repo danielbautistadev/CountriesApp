@@ -1,6 +1,6 @@
 <h2>Países: </h2>
 <ul class="list-group">
-    <li
+    <!-- <li
         routerLink="" 
         [routerLinkActiveOptions]="{ exact: true }"
         routerLinkActive="active"
@@ -12,15 +12,33 @@
         class="list-group-item">About
     </li>
     <li 
-        routerLink="service"
+        routerLink="services"
         routerLinkActive="active"
         class="list-group-item">Services
     </li>
-    <li class="list-group-item">Portfolio</li>
+    <li 
+        class="list-group-item"
+        routerLinkActive="active"
+        routerLink="portfolio">Portfolio</li>
     <li 
         routerLink="contact"
         routerLinkActive="active"
         class="list-group-item">Contact
     </li>
-    <li class="list-group-item">Blog</li>
+    <li class="list-group-item">Blog</li> -->
+    <li 
+        routerLink="countries/by-capital"
+        routerLinkActive="active"
+        class="list-group-item">Por Capital
+    </li>
+    <li 
+        routerLink="countries/by-country"
+        routerLinkActive="active"
+        class="list-group-item">Por País
+    </li>
+    <li 
+        routerLink="countries/by-region"
+        routerLinkActive="active"
+        class="list-group-item">Por Región
+    </li>
 </ul>
