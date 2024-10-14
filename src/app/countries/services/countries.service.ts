@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, tap, map, of } from 'rxjs';
 import { Country } from '../interfaces/country';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 
 export class CountriesService {
 
@@ -20,6 +20,22 @@ export class CountriesService {
                 // tap( countries => console.log("Tag2",countries) )
                 catchError( error => of([]))
             );
+    }
+
+    searchCountry( term: string ): Observable<Country[]> {
+        const url: string = `${this.apiUrl}/name/${term}`;
+        return this.http.get<Country[]>(url)
+            .pipe(
+                catchError( error => of([]) )
+            )
+    }
+
+    searchRegion( region: string ): Observable<Country[]> {
+        const url: string = `${this.apiUrl}/region/${region}`;
+        return this.http.get<Country[]>(url)
+            .pipe(
+                catchError( error => of([]) )
+            )
     }
     
 }
