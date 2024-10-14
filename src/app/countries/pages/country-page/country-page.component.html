@@ -1,1 +1,68 @@
-<p>country-page works!</p>
+<ng-template #loading>
+    <div class="alert alert-info" style="text-align: center; margin-top: 40px;">
+        Espere por favor ...
+    </div>
+</ng-template>
+
+<div *ngIf="country; else loading;">
+    <div  class="row">
+        <div class="col-12">
+            <span style="text-transform: uppercase; font-weight: 700; font-size: 18px; margin-top: 40px; display: inline-block;">País:</span>
+            <h2>{{ country.name.common }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Escudo</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Habitantes</th>
+                        <th scope="col">Capital</th>
+                        <th scope="col">País</th>
+                        <th scope="col">Región</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">1</td>
+                        <td><img [src]="country.coatOfArms.svg" [alt]="country.flags.alt" class="img-thumbnail" style="width: 100px;"></td>
+                        <td>{{ country.cca3 }}</td>
+                        <td>{{ country.population | number }}</td>
+                        <td>{{ country.capital }}</td>
+                        <td>{{ country.name.common }}</td>
+                        <td>{{ country.region }}</td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Traducciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">1</td>
+                        <td>
+                            <span class="badge bg-primary me-2">{{ country.translations['ara'].common }}</span>
+                            <span class="badge bg-primary me-2">{{ country.translations['bre'].common }}</span>
+                            <span class="badge bg-primary me-2">{{ country.translations['fra'].common }}</span>
+                            <span class="badge bg-primary me-2">{{ country.translations['ita'].common }}</span>
+                            <span class="badge bg-primary me-2">{{ country.translations['jpn'].common }}</span>
+                            <span class="badge bg-primary me-2">{{ country.translations['kor'].common }}</span>
+                            <span class="badge bg-primary me-2">{{ country.translations['rus'].common }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>        
+        </div>
+    </div>
+</div>
