@@ -1,7 +1,8 @@
 <div class="row">
-    <div class="col">
+    <div class="col text-center" style="margin: 18px 0;">
+        <!-- searchBox -->
         <!-- El componente drowdown-search-region sirve para buscar países por región -->
-        <div class="btn-group" style="margin: 20px 0;">
+        <!-- <div class="btn-group" style="margin: 20px 0;">
             <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Buscar por Región
             </button>
@@ -13,7 +14,16 @@
                 <li><a class="dropdown-item" (click)="searchByRegion('oceania')">Oceania</a></li>
                 <li><a class="dropdown-item" (click)="searchByRegion('antarctic')">Antartida</a></li>
             </ul>
-        </div>
+        </div> -->
+
+        <!-- declaramos un botón para cada región, al hacer click en el botón se ejecuta la función searchByRegion(region) y se le pasa como parámetro la región seleccionada. También se le aplica una clase condicional btn-outline-primary si la región seleccionada es igual a la región actual. -->
+        <button *ngFor="let region of regions" 
+            (click)="searchByRegion(region)" 
+            [ngClass]="{'btn-outline-primary': selectedRegion === region }"
+            class="btn" 
+            style="margin: 0 12px;">
+            {{ region }}
+        </button>
     </div>
 </div>
 <div class="row">
