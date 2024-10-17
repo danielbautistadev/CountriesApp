@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, tap, map, of } from 'rxjs';
+import { catchError, Observable, tap, map, of, delay } from 'rxjs';
 import { Country } from '../interfaces/country';
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +15,8 @@ export class CountriesService {
     // creamos un método privado llamado 'getCountriesRequest' que devuelve un Observable de tipo 'Country[]' y recibe como parámetro llamado 'url' de tipo ´string' que representa la URL de la petición que vamos a realizar a la API. Este método utiliza el método 'get' del objeto 'http' para realizar la petición y se utiliza el operador 'pipe' para encadenar una serie de operadores que transforman y manejan la respuesta de la API. En este caso, se utiliza el operador 'catchError' para manejar cualquier error que pueda ocurrir durante la petición y devolver un Observable vacío en su lugar.
     private getCountriesRequest(url: string): Observable<Country[]> {
         return this.http.get<Country[]>( url ).pipe(
-            catchError(error => of([]))
+            catchError(error => of([])),
+            delay( 2000 )
         );
     }
 

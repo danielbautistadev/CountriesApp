@@ -2,42 +2,45 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
-import { ServicesPageComponent } from './pages/services-page/services-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { NavigationBarComponent } from './components/navigationBar/navigation-bar.component';
 import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
-import { NavigationBarComponent } from './components/navigationBar/navigation-bar.component';
+import { ServicesPageComponent } from './pages/services-page/services-page.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 
 
 @NgModule({
   declarations: [
-    HomePageComponent,
     AboutPageComponent,
-    SidebarComponent,
     ContactPageComponent,
-    ServicesPageComponent,
+    HomePageComponent,
+    LoadingSpinnerComponent,
+    NavigationBarComponent,
     PortfolioPageComponent,
     SearchBoxComponent,
-    NavigationBarComponent
+    ServicesPageComponent,
+    SidebarComponent,
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
-    HomePageComponent,
     AboutPageComponent,
     ContactPageComponent,
-    SidebarComponent,
-    ServicesPageComponent,
+    HomePageComponent,
+    LoadingSpinnerComponent,
+    NavigationBarComponent,
     PortfolioPageComponent,
     SearchBoxComponent,
-    NavigationBarComponent
+    ServicesPageComponent,
+    SidebarComponent,
   ]
 })
 export class SharedModule { }
