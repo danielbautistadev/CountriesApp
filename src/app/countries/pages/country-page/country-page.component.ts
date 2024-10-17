@@ -21,35 +21,14 @@ export class CountryPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.activatedRoute.params
-      // .subscribe ( ({ id }) => {
-      //   this.searchCountry(id);
-      // });
-      // .subscribe( this.searchCountry );
-
       .pipe(
         switchMap( ({id}) => this.countriesService.searchCountryByAlphaCode( id ) )
       )
       .subscribe( country => {
         if( !country ) return this.router.navigateByUrl('');
         return this.country = country;
-        // return;
       });
-    
-  }
-
-  // searchCountry( code: string) {
-  //   this.countriesService.searchCountryByAlphaCode( code )
-  //         .subscribe( country => {
-  //           console.log( { country } );
-  //         });
-  // }
-  // searchCountry( params: Params) {
-  //   this.countriesService.searchCountryByAlphaCode( params['id'] )
-  //     .subscribe( country => {
-  //       console.log( { country } );
-  //     });
-  // }
-
-  
+      
+  }  
 
 }

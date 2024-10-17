@@ -4,8 +4,13 @@ import { ByCountryPageComponent } from './pages/by-country-page/by-country-page.
 import { ByRegionPageComponent } from './pages/by-region-page/by-region-page.component';
 import { ByCapitalPageComponent } from './pages/by-capital-page/by-capital-page.component';
 import { CountryPageComponent } from './pages/country-page/country-page.component';
+import { AllCountryPageComponent } from './pages/all-country-page/all-country-page.component';
 
 const routes: Routes = [
+    {
+        path: '',
+        component: AllCountryPageComponent
+    },
     {
         path: 'by-country',
         component: ByCountryPageComponent
@@ -24,7 +29,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'by-capital'
+        redirectTo: ''
     }
 
 ]

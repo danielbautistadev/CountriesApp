@@ -1,15 +1,23 @@
-<h2>Por Región</h2>
-<hr>
 <div class="row">
     <div class="col">
-        <!-- SearchBox -->
-        <shared-search-box 
-            (onValue)="searchByRegion($event)"
-            placeholder="Buscar por país"></shared-search-box>
+        <!-- El componente drowdown-search-region sirve para buscar países por región -->
+        <div class="btn-group" style="margin: 20px 0;">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Buscar por Región
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" (click)="searchByRegion('africa')">África</a></li>
+                <li><a class="dropdown-item" (click)="searchByRegion('americas')">América</a></li>
+                <li><a class="dropdown-item" (click)="searchByRegion('asia')">Asia</a></li>
+                <li><a class="dropdown-item" (click)="searchByRegion('europe')">Europa</a></li>
+                <li><a class="dropdown-item" (click)="searchByRegion('oceania')">Oceania</a></li>
+                <li><a class="dropdown-item" (click)="searchByRegion('antarctic')">Antartida</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <countries-table [countries]="countries"></countries-table>
+        <region-table [countries]="countries"></region-table>
     </div>
 </div>

@@ -9,6 +9,7 @@ import { ContactPageComponent } from './pages/contact-page/contact-page.componen
 import { ServicesPageComponent } from './pages/services-page/services-page.component';
 import { PortfolioPageComponent } from './pages/portfolio-page/portfolio-page.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { NavigationBarComponent } from './components/navigationBar/navigation-bar.component';
 
 
 
@@ -21,7 +22,8 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
     ContactPageComponent,
     ServicesPageComponent,
     PortfolioPageComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    NavigationBarComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
     SidebarComponent,
     ServicesPageComponent,
     PortfolioPageComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    NavigationBarComponent
   ]
 })
 export class SharedModule { }
