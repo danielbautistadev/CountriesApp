@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country';
 
@@ -7,13 +7,18 @@ import { Country } from '../../interfaces/country';
   templateUrl: './by-capital-page.component.html',
   styles: ``
 })
-export class ByCapitalPageComponent {
+export class ByCapitalPageComponent implements OnInit {
 
   public countries: Country[] = [];
   public isLoading: boolean = false; // 1. Inicializamos un propiedad booleana en false para mostrar el spinner cuando se realiza la petición HTTP
+  public initialValue: string = '';
 
-  constructor( private countriesServices: CountriesService ) {
+  constructor( private countriesServices: CountriesService ) {  }
 
+  ngOnInit(): void {
+    // 4. Al inicializar el componente, obtenemos los países almacenados en el servicio para mostrarlos en la vista sin necesidad de realizar una nueva petición HTTP
+    this.countries = this.countriesServices.cacheStore.byCapital.countries; 
+    this.initialValue = this.countriesServices.cacheStore.byCapital.term;
   }
 
   searchByCapital( term: string ): void {

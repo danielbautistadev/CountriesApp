@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, tap, map, of, delay } from 'rxjs';
 import { Country } from '../interfaces/country';
+import { CacheStore } from '../interfaces/cache-store.interface';
+import { Region } from '../interfaces/region.type';
 
 @Injectable({ providedIn: 'root' })
 
@@ -9,8 +11,17 @@ export class CountriesService {
     // creamos una propiedad privada llamada 'apiUrl' que contiene la URL base de la API que vamos a utilizar.
     private apiUrl: string = 'https://restcountries.com/v3.1';
 
+    public cacheStore: CacheStore = {
+        byCapital: { term: '', countries: [] },
+        byCountries: { term: '', countries: [] },
+        byRegion: { region: '', countries: [] },
+    }
+
+
     // asignamos al construdtor de la clase 'CountriesService' un parámetro privado llamado 'http' de tipo 'HttpClient' que nos permitirá realizar peticiones HTTP a la API.
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+        // console.log( 'CountriesService Initialized' );
+     }
 
     // creamos un método privado llamado 'getCountriesRequest' que devuelve un Observable de tipo 'Country[]' y recibe como parámetro llamado 'url' de tipo ´string' que representa la URL de la petición que vamos a realizar a la API. Este método utiliza el método 'get' del objeto 'http' para realizar la petición y se utiliza el operador 'pipe' para encadenar una serie de operadores que transforman y manejan la respuesta de la API. En este caso, se utiliza el operador 'catchError' para manejar cualquier error que pueda ocurrir durante la petición y devolver un Observable vacío en su lugar.
     private getCountriesRequest(url: string): Observable<Country[]> {
@@ -40,17 +51,23 @@ export class CountriesService {
 
     searchCapital( term: string ): Observable<Country[]> {
         const url: string = `${this.apiUrl}/capital/${term}`;
-        return this.getCountriesRequest(url);
+        return this.getCountriesRequest(url).pipe(
+            tap( countries => this.cacheStore.byCapital = { term, countries } ),
+        );
     }
 
     searchCountry( term: string ): Observable<Country[]> {
         const url: string = `${this.apiUrl}/name/${term}`;
-        return this.getCountriesRequest(url);
+        return this.getCountriesRequest(url).pipe(
+            tap( countries => this.cacheStore.byCountries = { term, countries } ),
+        );
     }
 
-    searchRegion( region: string ): Observable<Country[]> {
+    searchRegion( region: Region ): Observable<Country[]> {
         const url: string = `${this.apiUrl}/region/${region}`;
-        return this.getCountriesRequest(url);
+        return this.getCountriesRequest(url).pipe(
+            tap( countries => this.cacheStore.byRegion = { region, countries } ),
+        );
     }
     
 }

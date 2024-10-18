@@ -1,0 +1,2 @@
+// 2. Definimos un tipo personalizado llamada 'Region' que es una unión de cinco cadenas de texto: 'Africa', 'Americas', 'Asia', 'Europe' y 'Oceania'. Este tipo se utiliza para especificar las regiones disponibles para la búsqueda de países.
+export type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania' | ''; 
