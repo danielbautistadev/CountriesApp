@@ -30,6 +30,7 @@ const routes: Routes = [
     },
     {
         path: 'countries',
+        // La propiedad 'loadChildren' se utiliza para cargar de forma perezosa el módulo de países. Esto significa que el módulo de países solo se cargará cuando se acceda a la ruta '/countries'. Esto puede mejorar el rendimiento de la aplicación al cargar solo los módulos necesarios en cada momento.
         loadChildren: () => import('./countries/countries.module').then( m => m.CountriesModule)
     },
     {
@@ -37,6 +38,8 @@ const routes: Routes = [
         redirectTo: 'countries'
     }
 ]
+
+// El método 'forRoot' se utiliza para configurar las rutas principales de la aplicación.
 
 @NgModule({
     imports: [

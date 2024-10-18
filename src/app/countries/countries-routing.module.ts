@@ -34,6 +34,9 @@ const routes: Routes = [
 
 ]
 
+
+// El método 'forChild()' es utilizado para crear un módulo de enrutamiento secundario. Esto significa que el módulo de enrutamiento secundario se utilizará para definir las rutas de un módulo específico, en lugar de definir las rutas de la aplicación completa. Esto es útil cuando se desea dividir la aplicación en módulos más pequeños y manejables, cada uno con su propio conjunto de rutas.
+
 @NgModule({
     imports: [
         RouterModule.forChild( routes )
